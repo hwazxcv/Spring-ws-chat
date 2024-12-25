@@ -1,6 +1,7 @@
-package com.stomp.chat.common;
+package com.stomp.chat.chat;
 
-import com.stomp.chat.common.utils.MessageUtil;
+import com.stomp.chat.common.ResponseRestData;
+import com.stomp.chat.common.utils.MessageUtils;
 import com.stomp.chat.exception.CommonException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ChatAdvice {
 
-    private final MessageUtil messageUtil;
+    private final MessageUtils messageUtil;
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseRestData> errorHandler(Exception e ){

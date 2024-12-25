@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class MessageUtil {
+public class MessageUtils {
 
     private static ResourceBundle validationsBundle;
 

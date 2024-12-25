@@ -1,4 +1,4 @@
-package com.stomp.chat.common.utils;
+package com.stomp.chat.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -6,15 +6,17 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @RequiredArgsConstructor
-public class ConfigUtils implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer {
 
     private final EntityManager em;
 
@@ -47,6 +49,12 @@ public class ConfigUtils implements WebMvcConfigurer {
         ms.setDefaultEncoding("UTF-8");
         ms.setBasenames("messages.commons","messages.validations","messages.errors");
         return ms;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/");
     }
 
 
